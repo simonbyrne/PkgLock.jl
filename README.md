@@ -15,7 +15,7 @@ Note that you probably don't want to add PkgLock.jl as a dependency to your proj
 
 For example, you could add it to a shared environment named `pkglock`:
 ```julia
-julia -e 'using Pkg; Pkg.activate("pkglock"; shared=true); Pkg.add("https://github.com/simonbyrne/PkgLock.jl")'
+julia -e 'using Pkg; Pkg.activate("pkglock"; shared=true); Pkg.add(PackageSpec(url="https://github.com/simonbyrne/PkgLock.jl"))'
 ```
 (this only needs to be done once)
 
