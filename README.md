@@ -11,8 +11,16 @@ In particular, this partially works around the following issues:
 
 This currently provides one function `instantiate_precompile` which will attempt to run `Pkg.instantiate()` and `Pkg.precompile()`. If the latter fails, it will attempt to rerun `Pkg.build()` and `Pkg.precompile()`.
 
-A typical usage might be:
+Note that you probably don't want to add PkgLock.jl as a dependency to your project. Instead, a typical usage would be to install PkgLock.jl into a shared environment, and then use it in your initialization scripts.
+
+For example, you could add it to a shared environment named `pkglock`:
+```julia
+julia -e 'using Pkg; Pkg.activate("pkglock"; shared=true); Pkg.add("PkgLock")'
 ```
-julia --project -e 'using PkgLock; PkgLock.instantiate_precompile()'
+(this only needs to be done once)
+
+Then in your job submission script, you might have
+```
+julia --project -e 'push!(LOAD_PATH, "@pkglock"); using PkgLock; PkgLock.instantiate_precompile()'
 # run program which uses the project
 ```
