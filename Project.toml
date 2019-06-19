@@ -1,0 +1,8 @@
+name = "PkgLock"
+uuid = "07caef7a-92b9-11e9-22c2-110dd43644df"
+authors = ["Simon Byrne <simonbyrne@gmail.com>"]
+version = "0.1.0"
+
+[deps]
+Pidfile = "fa939f87-e72e-5be4-a000-7fc836dbe307"
+Pkg = "44cfe95a-1eb2-52ea-b672-e2afdf69b78f"
